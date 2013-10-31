@@ -117,6 +117,9 @@
             // 
             // CopyProgress
             // 
+            this.CopyProgress.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CopyProgress.FormattingEnabled = true;
             this.CopyProgress.Location = new System.Drawing.Point(15, 126);
             this.CopyProgress.Name = "CopyProgress";

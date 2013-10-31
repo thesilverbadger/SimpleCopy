@@ -34,9 +34,18 @@ namespace SimpleCopy
 
             CopyService copyService = new CopyService();
 
-            //TODO: Event handler
+            //Event handler
+            copyService.FileCopied += copyService_FileCopied;
+
             copyService.CopyDirectory(CopySource.Text, CopyDestination.Text);
         }
+
+        private void copyService_FileCopied(object sender, FileCopyEventArgs e)
+        {
+            CopyProgress.Items.Add(string.Format("{0} copied", e.FileName));
+            Application.DoEvents();
+        }
+
 
         private void OpenSourceDialog_Click(object sender, EventArgs e)
         {

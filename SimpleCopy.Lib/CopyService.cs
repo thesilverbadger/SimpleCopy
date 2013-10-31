@@ -33,6 +33,9 @@ namespace SimpleCopy.Lib
             {
                 string destinationFile = Path.Combine(destination, Path.GetFileName(file));
                 File.Copy(file, destinationFile);
+
+                //raise the copy event to notify the UI
+                FileCopied(null, new FileCopyEventArgs(destinationFile));
             }
 
             //this needs to be recursive.
@@ -43,7 +46,7 @@ namespace SimpleCopy.Lib
         {
             foreach (var directory in Directory.GetDirectories(source))
             {
-                //hack - we only want the names
+                //timesaving hack - we only want the names
                 string cleanDirectory = directory.Replace(source + @"\", "");
 
                 string destinationPath = Path.Combine(_destinationRoot, cleanDirectory);
@@ -54,10 +57,15 @@ namespace SimpleCopy.Lib
                 {
                     string destinationFile = Path.Combine(destinationPath, Path.GetFileName(file));
                     File.Copy(file, destinationFile);
+
+                    //raise the copy event to notify the UI
+                    FileCopied(null, new FileCopyEventArgs(destinationFile));
                 }
 
                 CopyRecursively(directory);
             }
         }
+
+        public event EventHandler<FileCopyEventArgs> FileCopied;
     }
 }
