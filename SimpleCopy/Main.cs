@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleCopy.Lib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,22 @@ namespace SimpleCopy
 
         private void Start_Click(object sender, EventArgs e)
         {
-            
+            if (string.IsNullOrEmpty(CopySource.Text))
+            { 
+                //Messagebox isn't great, but it is quick
+                MessageBox.Show("Please enter a copy source");
+            }
+
+            if (string.IsNullOrEmpty(CopyDestination.Text))
+            {
+                //Messagebox isn't great, but it is quick
+                MessageBox.Show("Please enter a copy destination");                
+            }
+
+            CopyService copyService = new CopyService();
+
+            //TODO: Event handler
+            copyService.CopyDirectory(CopySource.Text, CopyDestination.Text);
         }
 
         private void OpenSourceDialog_Click(object sender, EventArgs e)
