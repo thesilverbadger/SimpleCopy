@@ -1,0 +1,22 @@
+﻿The application should allow the user to pick or type a source folder and a target folder to which the source directory should be copied. 
+The source folder should be copied inside the target folder (which has to already exist – although it should not already contain 
+the source directory – e.g. in the case somebody “repeats” the copy).
+
+Directories should be explicitly created prior to copying the files into them.
+
+Use System.IO.Directory.GetFiles to retrieve a list of files in a given directory
+Use System.IO.Directory.GetDirectories to retrieve a list of subdirectories for a given directory
+Use System.IO.File.Copy to copy a given file
+Use System.IO.Directory.CreateDirectory to create directories prior to copying files into them
+During the copying procedure the application should show a history of each of the copied files using a simple Listbox control, 
+which visually updates as the copy is being performed. DO NOT attempt to write a background worker / multithreaded application unless you really
+ want to. Application.DoEvents() is perfectly acceptable.
+
+TIP: You should ensure that the folder you are copying from has plenty of files (at least 100),  multiple folders and sub folders. 
+Some of the files should be at least 5MB so you can see how the application performs under these conditions.
+
+ESSENTIAL REQUIREMENTS:-
+
+Implement a recursive technique to copy each file from the source directory to the target directory.
+Write the application in a way that the "copying" functionality can be reused - for example in a web application. 
+That means you must de-couple your business logic and UI
