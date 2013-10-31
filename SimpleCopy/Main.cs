@@ -24,12 +24,14 @@ namespace SimpleCopy
             { 
                 //Messagebox isn't great, but it is quick
                 MessageBox.Show("Please enter a copy source");
+                return;
             }
 
             if (string.IsNullOrEmpty(CopyDestination.Text))
             {
                 //Messagebox isn't great, but it is quick
-                MessageBox.Show("Please enter a copy destination");                
+                MessageBox.Show("Please enter a copy destination");
+                return;
             }
 
             CopyService copyService = new CopyService();
